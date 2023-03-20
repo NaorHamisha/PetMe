@@ -5,7 +5,7 @@ import {ContentWrapper} from "../home/Home";
 import AsyncDataLoaderWrapper from "../appearence/AsyncDataLoaderWrapper";
 import moment from "moment/moment";
 import styled from "styled-components";
-import {Card} from "react-bootstrap";
+import {Card, Row, Form, Modal, Button} from "react-bootstrap";
 import {SearchButton, SearchContainer, SearchForm, SearchInput} from "../home/Catalog";
 
 export default function OrdersView() {
@@ -19,6 +19,12 @@ export default function OrdersView() {
     const [minProductsSearch, setMinProductsSearch] = useState("");
     const [minOrderPriceSearch, setMinOrderPriceSearch] = useState("");
     const [filteredData, setFilteredData] = useState([]);
+    const [show, setShow] = useState(false);
+
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
+
+
 
     useEffect(() => {
         setFilteredData(data);
@@ -33,29 +39,40 @@ export default function OrdersView() {
     };
 
     return (
-        <Card className="align-items-center">
+        <Card className="align-items-center" style={{backgroundColor: "beige"}}>
             <Body>
                 <Card.Title>All Orders</Card.Title>
-                <SearchContainer>
-                    <SearchForm onSubmit={handleFormSubmit}>
-                        <SearchInput className="form-control"
-                                     type="text"
-                                     placeholder="Ordered By..."
-                                     value={orderedBySearch}
-                                     onChange={(e) => setOrderedBySearch(e.target.value)}/>
-                        <SearchInput className="form-control"
-                                     type="number"
-                                     placeholder="Minimum Products Per Order..."
-                                     value={minProductsSearch}
-                                     onChange={(e) => setMinProductsSearch(e.target.value)}/>
-                        <SearchInput className="form-control"
-                                     type="number"
-                                     placeholder="Minimum Order Price..."
-                                     value={minOrderPriceSearch}
-                                     onChange={(e) => setMinOrderPriceSearch(e.target.value)}/>
-                        <SearchButton type='submit' variant="info">Search</SearchButton>
-                    </SearchForm>
-                </SearchContainer>
+                <FilterButton variant="warning" onClick={handleShow}>
+                    Use me for filter <i class="bi bi-funnel"></i>
+                </FilterButton>
+            <Modal show={show} onHide={handleClose}>
+                <Modal.Header closeButton>
+                <Modal.Title>Filtering options</Modal.Title>
+                </Modal.Header>
+                <Modal.Body>
+                    <Row>
+                        <Form onSubmit={handleFormSubmit}>
+                            
+                            <SearchInput className="form-control"
+                                        type="text"
+                                        placeholder="Ordered By..."
+                                        value={orderedBySearch}
+                                        onChange={(e) => setOrderedBySearch(e.target.value)}/>
+                            <SearchInput className="form-control"
+                                        type="number"
+                                        placeholder="Minimum Products Per Order..."
+                                        value={minProductsSearch}
+                                        onChange={(e) => setMinProductsSearch(e.target.value)}/>
+                            <SearchInput className="form-control"
+                                        type="number"
+                                        placeholder="Minimum Order Price..."
+                                        value={minOrderPriceSearch}
+                                        onChange={(e) => setMinOrderPriceSearch(e.target.value)}/>
+                            <SearchButton type='submit' variant="warning" onClick={handleClose}>Search</SearchButton>
+                        </Form>
+                    </Row>
+            </Modal.Body>
+        </Modal>
                 <AsyncDataLoaderWrapper loading={loading} text="loading orders...">
                     {filteredData && filteredData.map(order =>
                         <OrdersWrapper>
@@ -75,14 +92,15 @@ export default function OrdersView() {
                                             </Details>
                                             <Price>
                                                 <h6>{product.product.price}₪</h6>
+                                                
                                                 <h6>X{product.quantity}</h6>
                                             </Price>
                                         </OrderProduct>
                                     )}
                                 </OrderProducts>
                                 <OrderFooter>
-                                    <h6>Ordered at {moment(order.date).format('YYYY-MM-DD')}</h6>
-                                    <h5>Total: {order.total}₪</h5>
+                                    <OrderDate>Ordered at {moment(order.date).format('YYYY-MM-DD')}</OrderDate>
+                                    <OrderDate>Paid: {order.total}₪</OrderDate>
                                 </OrderFooter>
                             </Order>
                         </OrdersWrapper>
@@ -93,6 +111,13 @@ export default function OrdersView() {
     );
 }
 const OrderHeader = styled.div`
+    background-color: #FFDA29;
+    border-radius: 6px;
+`;
+
+const OrderDate = styled.h6`
+    background-color: #FFDA29;
+    border-radius: 6px;
 `;
 
 const Body = styled(Card.Body)`
@@ -116,6 +141,10 @@ const OrderProduct = styled.div`
   height: 5rem;
   display: flex;
   margin: 1em 0 0 0;
+`;
+
+export const FilterButton = styled(Button)`
+margin: 30px;
 `;
 
 const OrderProducts = styled.div`

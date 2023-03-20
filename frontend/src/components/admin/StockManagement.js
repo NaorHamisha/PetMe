@@ -65,7 +65,7 @@ export default function StockManagement() {
                 <Card.Title>Stock Management</Card.Title>
                 <AsyncDataLoaderWrapper loading={loading} text={spinnerText}>
                     <Dropdown>
-                        <Dropdown.Toggle id="dropdown">Products</Dropdown.Toggle>
+                        <Dropdown.Toggle id="dropdown" variant="warning">Products</Dropdown.Toggle>
                         <DropdownMenu>
                             <input
                                 className="form-control"
@@ -111,7 +111,7 @@ export default function StockManagement() {
                                     value={selectedQuantity}
                                     onChange={(e) => handleQuantityChange(e.target.value)}
                                 />
-                                <button className="btn btn-primary" onClick={handleSave}>
+                                <button className="btn btn-warning" onClick={handleSave}>
                                     Save
                                 </button>
                             </div>
