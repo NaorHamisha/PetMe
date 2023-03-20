@@ -59,6 +59,7 @@ export default function MyOrders() {
 const Details = styled.div`
   width: fit-content;
   margin: 0 0 1em 2em;
+  max-height: 50px;
 `;
 
 const Price = styled.h5`
@@ -73,7 +74,7 @@ const Image = styled.img`
 const OrderProduct = styled.div`
   height: 5rem;
   display: flex;
-  margin: 1em 0 0 0;
+  margin: 5em 0 0 0;
 `;
 
 const OrderProducts = styled.div`
@@ -86,6 +87,7 @@ const Order = styled.div`
 
 const OrdersWrapper = styled.div`
   margin: 2rem 30rem 2rem 30rem;
+  border-style: groove;
 `;
 
 const OrderFooter = styled.div`

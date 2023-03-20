@@ -21,7 +21,7 @@ export default function Navigation() {
 
 
 
-        <NavbarWrapper collapseOnSelect expand="lg" bg="primary" variant="dark">
+        <NavbarWrapper collapseOnSelect expand="lg" style={{backgroundColor: "#FFDA29"}} variant="light">
             <Navbar.Brand href='home'>Pet.Me</Navbar.Brand>
             <Navbar.Toggle aria-controls="responsive-navbar-nav"/>
             <Navbar.Collapse id="responsive-navbar-nav">

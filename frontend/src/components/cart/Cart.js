@@ -90,7 +90,8 @@ const orderCart = () => {
                           <Price>{p.product.price}₪</Price>
                       </CartProduct>
                   )}
-                  {data?.products?.length === 0 && <div>your cart is empty. Yalla, start shopping!</div>}
+                  {data?.products?.length === 0 && <div><h2 style={{color: 'orange'}}>The cart is empty now. <br/>
+                  Let's feed our friends!!</h2></div>}
                   {data && data.products?.length !== 0 &&
                         <CartFooter>
                           <Row>
@@ -154,7 +155,7 @@ const CartProduct = styled.div`
   border-bottom: 1px solid #abb9be;
   height: 10rem;
   display: flex;
-  margin: -35px;
+  padding: 30px;
 `;
 
 

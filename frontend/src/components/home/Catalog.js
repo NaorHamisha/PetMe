@@ -33,8 +33,8 @@ export default function Catalog() {
     return (
         <AsyncDataLoaderWrapper loading={loading} text="Loading products...">
             <CatalogContainer>
-            <FilterButton variant="primary" onClick={handleShow}>
-                <i class="bi bi-funnel"></i>
+            <FilterButton variant="warning" onClick={handleShow}>
+                Use me for filter <i class="bi bi-funnel"></i>
             </FilterButton>
                   
                 <Row xs={1} md={4} className="g-5">
@@ -68,7 +68,7 @@ export default function Catalog() {
                                      placeholder="Max Price"
                                      value={maxPriceSearch}
                                      onChange={(e) => setMaxPriceSearch(e.target.value)}/>
-                        <Button type='submit' variant="info" onClick={handleClose}>Search</Button>
+                        <Button type='submit' variant="warning" onClick={handleClose}>Search</Button>
 
                     </Form>
                       </Row>
