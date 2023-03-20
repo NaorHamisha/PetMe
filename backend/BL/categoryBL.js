@@ -1,7 +1,7 @@
 const Category = require('../models/category');
 
 const getCategoryById = (req, res) => {
-  Category.findOne({id: req.params.id}).then((response) => {
+  Category.findOne({_id: req.params.id}).then((response) => {
     res.send(response);
   }).catch((e) => {
     console.log(`there was a problem...${e.message}`);
@@ -19,7 +19,7 @@ const getAllCategories = (req, res) => {
 const createCategory = (req, res) => {
   Category.create(
     {
-      ...req.body.params
+      ...req.body
     }
   ).then((response) => {
     res.send(response);

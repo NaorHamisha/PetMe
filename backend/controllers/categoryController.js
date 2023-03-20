@@ -3,7 +3,7 @@ const{ getCategoryById, getAllCategories, createCategory } = require('../BL/cate
 
 const router = express.Router();
 
-router.post('/createUser', async (req, res) => {
+router.post('/', async (req, res) => {
     createCategory(req, res);
 });
 

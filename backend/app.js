@@ -4,7 +4,10 @@ const mongoose = require('mongoose');
 
 const productsController = require('./controllers/productsController');
 const usersController = require('./controllers/usersController');
-const category = require('./models/category');
+const categoryController = require('./controllers/categoryController');
+const orderController = require('./controllers/orderController');
+const stockController = require('./controllers/stockController');
+const cartController = require('./controllers/cartController');
 
 const app = express();
 
@@ -24,7 +27,10 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());   
 
 app.use('/products', productsController);
-app.use('/products', categoryController);
+app.use('/categories', categoryController);
+app.use('/orders', orderController);
+app.use('/stocks', stockController);
+app.use('/carts', cartController);
 app.use('/users', usersController);
 
 app.listen(3005, () => {

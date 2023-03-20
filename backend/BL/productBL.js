@@ -12,19 +12,20 @@ const getAllProducts = (req, res) => {
   Product.find().populate('category').then((response) => {
     res.send(response);
   }).catch((e) => {
-    console.log(`there was a problem...${e.message}`);
+    res.send(e);
   });
 }
 
 const createProduct = (req, res) => {
   Product.create(
     {
-      ...req.body.params
+      ...req.body
     }
   ).then((response) => {
     res.send(response);
   }).catch((e) => {
-    console.log(`there was a problem...${e.message}`);
+    console.log(e.message);
+    res.send(e);
   });
 }
 

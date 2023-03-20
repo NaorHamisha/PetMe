@@ -3,7 +3,7 @@ const { getUserByUid, getUserById, getAllUsers, createUser } = require('../BL/us
 
 const router = express.Router();
 
-router.post('/createUser', async (req, res) => {
+router.post('/', async (req, res) => {
     createUser(req, res);
 });
 
