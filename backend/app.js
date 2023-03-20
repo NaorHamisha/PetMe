@@ -24,7 +24,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());   
 
 app.use('/products', productsController);
-app.use('/products', categoryController);
+// app.use('/products', categoryController);
 app.use('/users', usersController);
 
 app.listen(3005, () => {
