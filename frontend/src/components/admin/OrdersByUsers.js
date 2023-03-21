@@ -29,8 +29,17 @@ const OrderInfo = styled.div`
   width: 30em;
 `;
 
+const UserName = styled.h3`
+    background-color: #FFDA29;
+    border-radius: 6px;
+    max-width: 20%;
+`;
+
+
 const OrdersAmount = styled.h4`
-  margin: 1em 1em 1em 1em;
+  margin: 3em 1em 1em 2em;
+  background-color: #FFDA29;
+  border-radius: 6px;
 `;
 
 const Item = styled.div`
