@@ -7,7 +7,7 @@ import {useEffect, useState} from "react";
 
 
 export default function Catalog() {
-    const {data, loading} = useGet('getAllStocks');
+    const {data, loading} = useGet('stocks/all');
     const [brandSearch, setBrandSearch] = useState("");
     const [descriptionSearch, setDescriptionSearch] = useState("");
     const [maxPriceSearch, setMaxPriceSearch] = useState("");

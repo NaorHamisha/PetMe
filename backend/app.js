@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+var cors = require('cors');
 
 const productsController = require('./controllers/productsController');
 const usersController = require('./controllers/usersController');
@@ -25,6 +26,7 @@ mongoose.connect(mongoUrl, {useNewUrlParser: true})
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());   
+app.use(cors());
 
 app.use('/products', productsController);
 app.use('/categories', categoryController);

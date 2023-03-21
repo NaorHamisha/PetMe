@@ -20,7 +20,7 @@ const getAllStocks = (req, res) => {
 const createStock = (req, res) => {
   Stock.create(
     {
-      ...req.body.params
+      ...req.body
     }
   ).then((response) => {
     res.send(response);
