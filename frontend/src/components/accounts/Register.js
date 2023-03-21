@@ -44,7 +44,7 @@ export default function Register() {
 
     return (
         <Wrapper>
-            <Card>
+            <Card style={{backgroundColor: "cadetblue"}}>
                 <Form onSubmit={handleFormSubmit}>
                     <h3>Register</h3>
                     <div className="mb-3">
@@ -108,7 +108,7 @@ export default function Register() {
                         />
                     </div>
                     <div className="d-grid">
-                        <button type="submit" disabled={loading} className="btn btn-primary">
+                        <button type="submit" disabled={loading} className="btn" style={{color: 'white', backgroundColor: "#FFDA29"}}>
                             Submit
                         </button>
                     </div>

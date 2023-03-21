@@ -38,7 +38,7 @@ export default function Login() {
 
     return (
         <Wrapper>
-            <Card>
+            <Card style={{backgroundColor: "cadetblue"}}>
                 <Form onSubmit={handleFormSubmit}>
                     <h3>Login</h3>
                     <div className="mb-3">
@@ -62,7 +62,7 @@ export default function Login() {
                         />
                     </div>
                     <div className="d-grid">
-                        <button type="submit" disabled={loading} className="btn btn-primary">
+                        <button type="submit" disabled={loading} className="btn" style={{color: 'white', backgroundColor: "#FFDA29"}}>
                             Submit
                         </button>
                     </div>
