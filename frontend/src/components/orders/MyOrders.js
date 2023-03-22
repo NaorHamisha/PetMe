@@ -44,7 +44,7 @@ export default function MyOrders() {
                                 )}
                             </OrderProducts>
                             <OrderFooter>
-                                <h6>Ordered at {moment(order.date).format('YYYY-MM-DD')}</h6>
+                                <OrderedAt>Ordered at {moment(order.date).format('YYYY-MM-DD')}</OrderedAt>
                                 <h5>Total: {order.total}₪</h5>
                             </OrderFooter>
                         </Order>
@@ -66,6 +66,11 @@ const Price = styled.h5`
   margin-left: auto;
   margin-top: auto;
   text-align: end;
+`;
+
+const OrderedAt = styled.h6`
+  background-color: #FFDA29;
+  border-radius: 6px;
 `;
 
 const Image = styled.img`
