@@ -3,7 +3,7 @@ const User = require("../models/user");
 const Product = require("../models/product");
 
 const getCartByUserId = (req, res) => {
-    Cart.findOne({user: req.params.id}).deepPopulate('products.product').then((response) => {
+    Cart.findOne({user: req.query.id}).deepPopulate('products.product').then((response) => {
         res.send(response);
     }).catch((e) => {
         console.log(`there was a problem...${e.message}`);
@@ -38,10 +38,15 @@ async function removeProductFromCart(req, res) {
 
 async function addProductToCart(req, res) {
     try {
+        console.log(req.body);
         const currentCart = await Cart.findOne({
             user: req.body.userId
         }).deepPopulate('products.product');
-        const currentProduct = currentCart.products.filter(product => product._doc.product._doc._id === req.body.productId);
+        console.log("Desired: " + req.body.productId);
+        const currentProduct = currentCart.products.filter(product => {
+            console.log("DBsss:" + product._doc.product._doc._id);
+            return product._doc.product._doc._id === req.body.productId
+    });
 
         if (currentProduct.length === 0) {
             const product = await Product.findById(req.body.productId);

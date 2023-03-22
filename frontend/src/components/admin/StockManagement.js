@@ -14,14 +14,14 @@ export default function StockManagement() {
     const [shouldFetchPutData, setShouldFetchPutData] = useState(false);
     const [shouldFetchGetData, setShouldFetchGetData] = useState(true);
     const {data, loading} = useGet(
-        'getAllStocks',
+        'stocks/all',
         {},
         shouldFetchGetData,
         setShouldFetchGetData
     );
 
     usePut(
-        'updateStockByProductId',
+        'stocks/updateStockByProductId',
         {
             product: selectedStock?.product._id,
             quantity: parseInt(selectedQuantity),

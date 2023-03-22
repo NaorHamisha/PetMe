@@ -13,7 +13,7 @@ router.post('/', async (req, res) => {
     createOrder(req, res);
 });
 
-router.get('/:userId', async (req, res) => {
+router.get('/byUserId', async (req, res) => {
     getOrdersByUserId(req, res);
 });
 

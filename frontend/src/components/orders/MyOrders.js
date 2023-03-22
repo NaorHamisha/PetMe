@@ -13,7 +13,7 @@ export default function MyOrders() {
         data,
         loading,
         error
-    } = useGet('getOrdersByUserId', {userId: userMetadata?._id}, shouldFetch, setShouldFetch);
+    } = useGet('orders/byUserId', {userId: userMetadata?._id}, shouldFetch, setShouldFetch);
     useEffect(() => {
         if (Object.keys(userMetadata).length !== 0) {
             setShouldFetch(true);

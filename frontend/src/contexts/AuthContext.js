@@ -20,7 +20,7 @@ export function AuthProvider({children}) {
 
     function register(email, password, name, phoneNumber, address, role) {
         return createUserWithEmailAndPassword(auth, email, password).then((r) => {
-            axios.post('http://localhost:3001/createUser', {
+            axios.post('http://localhost:3005/users', {
                 uid: r.user.uid,
                 name: name,
                 mail: email,
@@ -56,7 +56,7 @@ export function AuthProvider({children}) {
     }, []);
 
     useEffect(() => {
-        currentUser && axios.get('http://localhost:3001/user', {
+        currentUser && axios.get(`http://localhost:3005/users/user/${currentUser?.uid}`, {
             headers: {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${currentUser?.accessToken}`,

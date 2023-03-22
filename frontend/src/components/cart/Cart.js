@@ -11,26 +11,26 @@ import usePost from "../../utils/requests/usePost";
 export default function Cart() {
   const {userMetadata} = useAuth();
   const [shouldFetch, setShouldFetch] = useState(false);
-  const {data, loading} = useGet('getCartByUserId', {id: userMetadata?._id}, shouldFetch, setShouldFetch);
+  const {data, loading} = useGet(`carts/getCartById`, {id: userMetadata?._id}, shouldFetch, setShouldFetch);
   const [productId, setProductId] = useState()
   const [shouldIncrease, setShouldIncrease] = useState(false);
-  usePost('addProductToCart', {
+  usePost('carts/addProduct', {
       userId: userMetadata?._id,
       productId: productId
   }, shouldIncrease, setShouldIncrease, () => setShouldFetch(true))
   const [shouldDecrease, setShouldDecrease] = useState(false);
-  usePost('removeProductFromCart', {
+  usePost('carts/removeProductFromCart', {
       userId: userMetadata?._id,
       productId: productId
   }, shouldDecrease, setShouldDecrease, () => setShouldFetch(true));
 
   const [shouldEmptyCart, setShouldEmptyCart] = useState(false);
-  usePost('emptyCart', {
+  usePost('carts/emptyCart', {
       userId: userMetadata?._id
   }, shouldEmptyCart, setShouldEmptyCart, () => setShouldFetch(true))
   const [order, setOrder] = useState({});
   const [shouldCreateOrder, setShouldCreateOrder] = useState(false);
-  usePost('createOrder', order, shouldCreateOrder, setShouldCreateOrder, () => setShouldEmptyCart(true));
+  usePost('orders', order, shouldCreateOrder, setShouldCreateOrder, () => setShouldEmptyCart(true));
   const totalPrice = useMemo(() => data?.products?.map(p => p.product.price * p.quantity).reduce((a, b) => a + b, 0), [data]);
   useEffect(() => {
     if (Object.keys(userMetadata).length !== 0) {

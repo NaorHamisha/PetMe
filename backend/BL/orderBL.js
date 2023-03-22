@@ -1,9 +1,10 @@
 const Order = require('../models/order');
 const Stock = require("../models/stock");
+
 const updateProductQuantity = require("../handlers/stockHandler");
 
 const getOrdersByUserId = (req, res) => {
-    Order.find({user: req.params.userId}).populate('user').deepPopulate('products.product').then((response) => {
+    Order.find({user: req.query.userId}).populate('user').deepPopulate('products.product').then((response) => {
         res.send(response);
     }).catch((e) => {
         console.log(`there was a problem...${e.message}`);

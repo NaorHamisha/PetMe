@@ -13,7 +13,7 @@ export default function OrdersView() {
         data,
         loading,
         error
-    } = useGet('getAllOrders');
+    } = useGet('orders/all');
 
     const [orderedBySearch, setOrderedBySearch] = useState("");
     const [minProductsSearch, setMinProductsSearch] = useState("");
@@ -43,7 +43,7 @@ export default function OrdersView() {
             <Body>
                 <Card.Title>All Orders</Card.Title>
                 <FilterButton variant="warning" onClick={handleShow}>
-                    Use me for filter <i class="bi bi-funnel"></i>
+                    Use me for filter <i className="bi bi-funnel"></i>
                 </FilterButton>
             <Modal show={show} onHide={handleClose}>
                 <Modal.Header closeButton>

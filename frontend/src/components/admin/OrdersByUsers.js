@@ -3,7 +3,7 @@ import styled from "styled-components";
 import useGet from "../../utils/requests/useGet";
 
 export default function OrdersByUsers() {
-    const {data, loading, error} = useGet('getOrdersByUser');
+    const {data, loading, error} = useGet('orders/getOrdersByUser');
     console.log(data);
     return (
         <Card className="align-items-baseline">

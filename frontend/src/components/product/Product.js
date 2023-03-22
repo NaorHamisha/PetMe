@@ -15,7 +15,7 @@ export default function Product(
   const [productQuantity, setProductQuantity] = useState(quantity);
   const {userMetadata} = useAuth();
   const [shouldFetch, setShouldFetch] = useState(false);
-  const {data, loading, error} = usePost('addProductToCart', {
+  const {data, loading, error} = usePost('carts/addProduct', {
         userId: userMetadata?._id,
         productId: product._id
     }, shouldFetch, setShouldFetch)
@@ -24,7 +24,7 @@ export default function Product(
       (async function() {
           const user = auth.currentUser;
           const token = user && (await user.getIdToken());
-          const socket = io('http://localhost:3002', {
+          const socket = io('http://localhost:3004', {
               "force new connection" : true,
               transports : ['websocket'],
               extraHeaders: {
@@ -51,7 +51,7 @@ export default function Product(
     return (
         <Col>
             <CardWithHover>
-                <Card.Img variant="top" src={product.image}/>
+                <CardImg variant="top" src={product.image} />
                 <AddToCartHover>
                     <AsyncDataLoaderWrapper loading={loading} text='adding item to cart...'>
                         <AddToCart onClick={addToCart}><b>+</b> Add to Cart </AddToCart>
@@ -72,6 +72,9 @@ export default function Product(
 
 const CardBody = styled(Card.Body)`
   width: 100%;
+`;
+const CardImg = styled(Card.Img)`
+  max-width: 70%;
 `;
 
 const Subtitle = styled(Card.Subtitle)`

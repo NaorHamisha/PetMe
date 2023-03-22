@@ -8,7 +8,7 @@ import styled from 'styled-components';
 export default function SalesGraph() {
     let graphOrders = [];
 
-    useGet('getLastWeekOrders').data?.forEach((order) => {
+    useGet('orders/getLastWeekOrders').data?.forEach((order) => {
         let date = getStartOfDate(order.date);
 
         graphOrders.push({

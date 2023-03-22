@@ -34,7 +34,7 @@ export default function Catalog() {
         <AsyncDataLoaderWrapper loading={loading} text="Loading products...">
             <CatalogContainer>
             <FilterButton variant="warning" onClick={handleShow}>
-                Use me for filter <i class="bi bi-funnel"></i>
+                Use me for filter <i className="bi bi-funnel"></i>
             </FilterButton>
                   
                 <Row xs={1} md={4} className="g-5">

@@ -8,8 +8,8 @@ const{
 
 const router = express.Router();
 
-router.get('/:userId', async (req, res) => {
-    getCartByUserId(req, res);
+router.get('/getCartById', async (req, res) => {
+    await getCartByUserId(req, res);
 });
 
 router.post('/emptyCart', async (req, res) => {
@@ -20,7 +20,7 @@ router.post('/removeProductFromCart', async (req, res) => {
     await removeProductFromCart(req, res);
 });
 
-router.post('/addProductTo', async (req, res) => {
+router.post('/addProduct', async (req, res) => {
     await addProductToCart(req, res);
 });
 
