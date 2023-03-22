@@ -21,8 +21,9 @@ const categoryController = require('./controllers/categoryController');
 const orderController = require('./controllers/orderController');
 const stockController = require('./controllers/stockController');
 const cartController = require('./controllers/cartController');
-
+const {startSocketIOConnection} = require('./realtime/socketService')
 const app = express();
+startSocketIOConnection()
 
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());   

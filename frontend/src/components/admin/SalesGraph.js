@@ -9,7 +9,10 @@ export default function SalesGraph() {
     let graphOrders = [];
 
     useGet('orders/getLastWeekOrders').data?.forEach((order) => {
+        console.log(order);
         let date = getStartOfDate(order.date);
+        console.log(date);
+        console.log("0-----------------------0")
 
         graphOrders.push({
             date: date,
@@ -51,13 +54,13 @@ export default function SalesGraph() {
                     'Saturday',
                 ])
                 .range([
-                    '#1f77b4',
-                    '#1f77b4',
-                    '#1f77b4',
-                    '#1f77b4',
-                    '#1f77b4',
-                    '#1f77b4',
-                    '#e377c2',
+                    '#b3b748',
+                    '#fa9405',
+                    '#2DADD2',
+                    '#3290CD',
+                    '#A15E80',
+                    '#5EA17F',
+                    '#FF005B',
                 ]);
 
             const nestedData = nest()
@@ -65,6 +68,7 @@ export default function SalesGraph() {
                 .entries(graphOrders);
 
             nestedData.forEach((day) => {
+                // console.log("0----------------0")
                 day.totalQuantity = d3.sum(day.values, (d) => d.quantity);
             });
 

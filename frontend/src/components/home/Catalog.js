@@ -24,10 +24,12 @@ export default function Catalog() {
 
     const handleFormSubmit = (e) => {
         e.preventDefault();
-        setFilteredData(data.map(item => item).filter(product =>
-            (product.product.name.toLowerCase().includes(brandSearch ? brandSearch.toLowerCase() : "")) &&
-            (product.product.description.toLowerCase().includes(descriptionSearch ? descriptionSearch.toLowerCase() : "")) &&
-            (maxPriceSearch && maxPriceSearch !== 0 ? product.product.price <= maxPriceSearch : true)));
+        console.log(data);
+        setFilteredData(data.map(item => item).filter(product => 
+          (product.product.name.toLowerCase().includes(brandSearch ? brandSearch.toLowerCase() : "")) &&
+          (product.product.description.toLowerCase().includes(descriptionSearch ? descriptionSearch.toLowerCase() : "")) &&
+          (maxPriceSearch && maxPriceSearch !== 0 ? product.product.price <= maxPriceSearch : true)));
+        
     };
 
     return (

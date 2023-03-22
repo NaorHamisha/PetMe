@@ -1,3 +1,4 @@
+import React, {useEffect, useState} from "react";
 import SalesGraph from './SalesGraph';
 import StockManagement from './StockManagement';
 import OrdersView from "./OrdersView";
@@ -6,10 +7,24 @@ import {Col, Row} from "react-bootstrap";
 import {ContentWrapper} from "../home/Home";
 import OrdersByUsers from "./OrdersByUsers";
 
-export default function Management() {
+export default function Management({liveUsersAomunt}) {
+  const [liveUsers, setLiveUsers] = useState();
+
+  useEffect(() => {
+    setLiveUsers(liveUsersAomunt)
+  });
+  
     return (
         <ContentWrapper>
             <ManagementContainer xs={1} md={1} className="g-xxl-4">
+                <Col>
+                    <Wrapper>
+                      <LiveUsersTitle>
+
+                          Amount of live connected user: {liveUsers} 
+                      </LiveUsersTitle>
+                    </Wrapper>
+                </Col>
                 <Col><StockManagement/></Col>
                 <Col><OrdersByUsers/></Col>
                 <Col><SalesGraph/></Col>
@@ -25,6 +40,11 @@ const ManagementContainer = styled(Row)`
 
 
 const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
+  text-align: center;
+`;
+
+const LiveUsersTitle = styled.h4`
+  color: brown;
+  background-color: #FFDA29;
+  border-radius: 6px;
 `;

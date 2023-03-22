@@ -12,7 +12,7 @@ import WithNav from "./components/layouts/WithNav";
 import Cart from "./components/cart/Cart";
 import Management from "./components/admin/Management";
 import MyOrders from "./components/orders/MyOrders";
-
+import {nn} from "./components/orders/MyOrders"
 function App() {
     return (
         <AuthProvider>
@@ -28,7 +28,7 @@ function App() {
                         <Route path="/home" element={<WithPrivateRoute><Home/></WithPrivateRoute>}/>
                         <Route path="/cart" element={<WithPrivateRoute><Cart/></WithPrivateRoute>}/>
                         <Route path="/orders" element={<WithPrivateRoute><MyOrders/></WithPrivateRoute>}/>
-                        <Route path="/management" element={<WithPrivateRoute><Management/></WithPrivateRoute>}/>
+                        <Route path="/management" element={<WithPrivateRoute><Management liveUsersAomunt={nn}/></WithPrivateRoute>}/>
                     </Route>
                     <Route path='*' element={<Navigate to='/login' replace/>}/>
                 </Routes>

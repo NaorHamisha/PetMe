@@ -4,15 +4,14 @@ import useGet from "../../utils/requests/useGet";
 
 export default function OrdersByUsers() {
     const {data, loading, error} = useGet('orders/getOrdersByUser');
-    console.log(data);
     return (
         <Card className="align-items-baseline">
             <Body>
                 <Card.Title>Orders By Users</Card.Title>
                 <ItemsWrapper>
                     {data && data.map(item =>
-                        <Item>
-                            <OrderInfo>
+                        <Item key={item.userId}>
+                            <OrderInfo key={item.userId}>
                                 <h3>{item.user}</h3>
                                 <div>id: {item.userId}</div>
                                 <div>email: {item.userMail}</div>

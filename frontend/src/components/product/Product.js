@@ -20,30 +20,30 @@ export default function Product(
         productId: product._id
     }, shouldFetch, setShouldFetch)
 
-  useEffect(() => {
-      (async function() {
-          const user = auth.currentUser;
-          const token = user && (await user.getIdToken());
-          const socket = io('http://localhost:3004', {
-              "force new connection" : true,
-              transports : ['websocket'],
-              extraHeaders: {
-                  Authorization: `Bearer ${token}`,
-              }
-          });
-          socket.on("connect", () => {
-              console.log(socket.id);
-          });
-          socket.on('connect_error', ()=> {
-              setTimeout(() => socket.connect(), 5000);
-          });
-          socket.on('stockUpdated-' + product._id, (data) => {
-              console.log(data);
-              setProductQuantity(data.newStock.quantity);
-          });
-      })()
-  }, [])
-
+    useEffect(() => {
+        (async function() {
+            const user = auth.currentUser;
+            const token = user && (await user.getIdToken());
+            const socket = io('http://localhost:5555', {
+                "force new connection" : true,
+                transports : ['websocket'],
+                extraHeaders: {
+                    Authorization: `Bearer ${token}`,
+                }
+            });
+            socket.on("connect", () => {
+                //console.log(socket.id);
+            });
+            socket.on('connect_error', ()=> {
+                setTimeout(() => socket.connect(), 5000);
+            });
+            socket.on('stockUpdated-' + product._id, (data) => {
+                //console.log(data);
+                setProductQuantity(data.newStock.quantity);
+            });
+        })()
+    }, [])
+  
     const addToCart = () => {
         setShouldFetch(true);
     };

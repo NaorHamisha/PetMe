@@ -75,25 +75,25 @@ export default function OrdersView() {
         </Modal>
                 <AsyncDataLoaderWrapper loading={loading} text="loading orders...">
                     {filteredData && filteredData.map(order =>
-                        <OrdersWrapper>
+                        <OrdersWrapper key={order._id}>
                             <Order>
                                 <OrderHeader>
                                     <h5>Ordered by: {order.user.name}, {order.user.mail}, {order.user.address}</h5>
                                 </OrderHeader>
                                 <OrderProducts>
                                     {order.products.map(product =>
-                                        <OrderProduct>
+                                        <OrderProduct key={product._id}>
                                             <div>
                                                 <Image src={product.product.image}></Image>
                                             </div>
                                             <Details>
-                                                <h6>{product.product.name}</h6>
-                                                <h7>{product.product.description}</h7>
+                                                <h5>{product.product.name}</h5>
+                                                <h5>{product.product.description}</h5>
                                             </Details>
                                             <Price>
-                                                <h6>{product.product.price}₪</h6>
+                                                {product.product.price}₪
                                                 
-                                                <h6>X{product.quantity}</h6>
+                                                X{product.quantity}
                                             </Price>
                                         </OrderProduct>
                                     )}

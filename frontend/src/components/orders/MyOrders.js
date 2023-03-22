@@ -7,22 +7,21 @@ import moment from "moment";
 import styled from "styled-components";
 
 export default function MyOrders() {
-    const {userMetadata} = useAuth();
-    const [shouldFetch, setShouldFetch] = useState(false);
-    const {
+  const {userMetadata} = useAuth();
+  const [shouldFetch, setShouldFetch] = useState(false);
+  const {
         data,
         loading,
         error
-    } = useGet('orders/byUserId', {userId: userMetadata?._id}, shouldFetch, setShouldFetch);
-    useEffect(() => {
+      } = useGet('orders/byUserId', {userId: userMetadata?._id}, shouldFetch, setShouldFetch);
+      useEffect(() => {
         if (Object.keys(userMetadata).length !== 0) {
-            setShouldFetch(true);
+          setShouldFetch(true);
         }
-    }, [userMetadata]);
-
-
-    console.log(data);
-    return (<ContentWrapper>
+      }, [userMetadata]);
+      
+      
+      return (<ContentWrapper>
             <AsyncDataLoaderWrapper loading={loading} text="loading cart...">
                 {data && data.map(order =>
                     <OrdersWrapper>
@@ -54,9 +53,10 @@ export default function MyOrders() {
             </AsyncDataLoaderWrapper>
         </ContentWrapper>
     );
-}
+  }
+  export const nn = 1;
 
-const Details = styled.div`
+  const Details = styled.div`
   width: fit-content;
   margin: 0 0 1em 2em;
   max-height: 50px;
